@@ -1,0 +1,1 @@
+This project consists of a series of simple JavaScript exercises that I'll aim to expand and optimize for improved performance, purely for enjoyment. I also plan to create a TypeScript version. Cofla, a character created by SoyDalto, faces various challenges that we'll tackle by learning new concepts in JavaScript.
