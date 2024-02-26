@@ -18,7 +18,7 @@ function checker(selected){
         break;
     }
 }
-
+/*this functions are not meant to be the most optimize way to work probably, at future this entirely code will be optimize*/
 function coflaIceCream(){
 /*
     https://www.youtube.com/watch?v=z95mZVUcJ-E&t=7661s
