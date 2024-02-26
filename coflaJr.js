@@ -202,7 +202,7 @@ function coflaGuilty(){
 
     do{
         let suspectSelected = prompt("Tenemos 3 sospechosos de asesinato\n1. Cofla\n2. Ron\n3. Jhonny\n Seleccione uno para iniciar el interrogatorio: ");
-        parseInt(suspectSelected);
+        suspectSelected = parseInt(suspectSelected);
         if(isNaN(suspectSelected) || suspectSelected < 1 || suspectSelected > 3){
             alert("seleccione una opcion valida");
             guilty = false;
@@ -331,13 +331,13 @@ function coflaGuilty(){
                         questABC = prompt(`Segunda pregunta: Estaba a las 3:30pm en el lugar?\n1. si\n2. no\n3. no decir nada`);
                         if(questABC === '3'){
                             alert("Por favor responda la pregunta.");
-                            quests[0] = false;
+                            quests[1] = false;
                         }else if(questABC === '1' && Jhonny.time === '3:30pm'){
                             alert("La maquina no hace nada");
-                            quests[0] = true;
+                            quests[1] = true;
                         }else{
                             alert("la maquina dispara una pequeña descarga");
-                            quests[0] = false;
+                            quests[1] = false;
                         }
                     }while(quests[1] != true);
 
@@ -346,12 +346,12 @@ function coflaGuilty(){
                         if(questABC === '3'){
                             alert("Por favor responda la pregunta.");
                             quests[2] = false;
-                        }else if(questABC === '1' && Cofla.murder === false){
-                            alert("la maquina dispara una pequeña descarga");
-                            quests[2] = false;
-                        }else{
+                        }else if(questABC === '1' && Jhonny.murder === true){
                             alert("La maquina no hace nada");
                             quests[2] = true;
+                        }else{
+                            alert("la maquina dispara una pequeña descarga");
+                            quests[2] = false;
                         }
                     }while(quests[2] != true);
 
