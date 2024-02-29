@@ -16,9 +16,22 @@ function checker(selected){
         case '3':
             coflaGuilty();
         break;
+
+        case '4':
+            partySmith();
+        break;
+
+        case '5':
+            coflaCollege();
+        break;
+
+        case '6':
+            coflaCalculator();
+        break;
     }
 }
-/*this functions are not meant to be the most optimize way to work probably, at future this entirely code will be optimize*/
+
+{/*first part this functions are not meant to be the most optimize way to work probably, at future this entirely code will be optimize*/
 function coflaIceCream(){
 /*
     https://www.youtube.com/watch?v=z95mZVUcJ-E&t=7661s
@@ -367,3 +380,99 @@ function coflaGuilty(){
         }
     }while(guilty != true);
 }
+/*End of the first part*/
+}
+
+{/*second part
+https://www.youtube.com/watch?v=z95mZVUcJ-E&t=7041s
+time: 3:34:00*/
+
+function partySmith(){
+/*Problema A: El señor de la calle ganó la lotería
+y realizó una fiesta para celebrar dicho acontesimiento
+entonces compro una maquina que;
+
+Deja pasar solo a los +18
+El primero que entre después de las 2 am, NO PAGA
+*/
+    let free = false;
+
+    const validarCliente = (time)=>{
+        let edad = prompt("Cuál es tu edad?");
+        if(edad >= 18){
+            if(time >= 2 && time < 7 && free == false){
+                alert(`Puedes pasar gratis ya que son las ${time}hs de la mañana y eres el primero`);
+                free = true;
+            }else{
+                alert(`Puedes pasar, pero tienes que pagar la entrada y son las ${time}`);
+            }
+        }else{
+            alert("Eres menos de edad, no puedes pasar.")
+        }
+    }
+
+    for(let i = 0; i < 8; i++){
+        validarCliente(i);
+    }
+}
+
+function coflaCollege(){
+/*Problema B: Cofla no pudo iniciar las clases
+ya que el sistema de registro se rompio y hasta
+que se vuelva a arregla cofla no podrá asistir a 
+clases de la u
+
+Crear Mini-sistema para registrar presntes (P)
+y ausentes (A)
+Pasados 30 dias, mostrar su situación final del alumno
+Maximo del 10% de ausencias*/
+
+    let cantidad = prompt("cuantos alumnos son?");
+    let alumnosTotales = [];
+
+    for(let i=0; i < cantidad; i++){
+        alumnosTotales[i] = [prompt("Nombre del alumno?  " + (i+1)), 0];
+    }
+
+    const tomarAsistencia = (nombre, p) =>{
+        let presencia = prompt(nombre);
+        if(presencia == 'p' || presencia == 'P'){
+            alumnosTotales[p][1]++;
+        }
+    }
+
+    for(let i=0; i<30; i++){
+        for(alumno in alumnosTotales){
+            tomarAsistencia(alumnosTotales[alumno][0], alumno);
+        }
+    }
+
+    for(alumno in alumnosTotales){
+        let resultado = `${alumnosTotales[alumno][0]}:<br>
+        _______Presente: ${alumnosTotales[alumno][1]}<br>
+        _______Ausencia: ${30 - alumnosTotales[alumno][1]}
+        `;
+        if(30 - alumnosTotales[alumno][1] > 18 ){
+            resultado+= "<b style:color:red>Reprobado por Inasistencias</b>\n\n";
+        }else{
+            "\n\n";
+        }
+        document.write(resultado);
+    }
+
+}
+
+function coflaCalculator(){
+/*Problema C: 
+Cofla feliz de iniciar las clases, ya tiene sus
+primeras tareas de calculo, pero para realizar sus
+operaciones de manera simple, deberá crear una
+calculadora que le simplifique el trabajo
+
+Crear una calculadora que pueda:
+sumar, restar, multiplicar y dividir
+
+*/
+}
+}
+
