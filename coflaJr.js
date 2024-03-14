@@ -28,10 +28,14 @@ function checker(selected){
         case '6':
             coflaCalculator();
         break;
+
+        case '7':
+            coflaInAndroidStore();
+        break;
     }
 }
 
-{/*first part this functions are not meant to be the most optimize way to work probably, at future this entirely code will be optimize*/
+{/*first part*/
 function coflaIceCream(){
 /*
     https://www.youtube.com/watch?v=z95mZVUcJ-E&t=7661s
@@ -430,7 +434,7 @@ Maximo del 10% de ausencias*/
     let cantidad = prompt("cuantos alumnos son?");
     let alumnosTotales = [];
 
-    for(let i=0; i < cantidad; i++){
+    for(let i = 0; i < cantidad; i++){
         alumnosTotales[i] = [prompt("Nombre del alumno?  " + (i+1)), 0];
     }
 
@@ -463,7 +467,8 @@ Maximo del 10% de ausencias*/
 }
 
 function coflaCalculator(){
-/*Problema C: 
+/*
+Problema C: 
 Cofla feliz de iniciar las clases, ya tiene sus
 primeras tareas de calculo, pero para realizar sus
 operaciones de manera simple, deberá crear una
@@ -473,6 +478,160 @@ Crear una calculadora que pueda:
 sumar, restar, multiplicar y dividir
 
 */
+    let calculator = prompt("que operación va a realizar? \n1. Suma\n2. Resta\n3. Multiplicacion\n4. Division");
+    let operatorOne = parseFloat(prompt("Digite el primer valor a operar: "));
+    let operatorTwo =  parseFloat(prompt("Digite el segundo valor a operar: "));
+    switch(calculator){
+        case '1': alert("el resultado es: " + sumator(operatorOne, operatorTwo)); break;
+        case '2': alert("el resultado es: " + substractor(operatorOne, operatorTwo)); break;
+        case '3': alert("el resultado es: " + multiplator(operatorOne, operatorTwo)); break;
+        case '4': alert("el resultado es: " + divider(operatorOne, operatorTwo)); break;
+    }
+    function sumator(a,b){
+        let c = a + b;
+        return c;
+    }
+    function substractor(a,b){
+        let c = a - b;
+        return c;
+    }
+    function multiplator(a,b){
+        let c = a * b;
+        return c;
+    }
+    function divider(a,b){
+        let c = a / b;
+        return c;
+    }
 }
 }
 
+{/*Third POO https://www.youtube.com/watch?v=z95mZVUcJ-E 4:42:00*/
+    /*problema A: Cofla entra a una tienda donde venden celulares, y quiere recomendaciones, lamentablemente los vendedores no tienen el conocimiento suficiente para dar buenas recomendaciones a cofla, lo que amerita la creacion de un sistema que:
+    1- Muestre particularidades de los 3 celulares
+    2- Cada uno debe tener color, peso, resolucion de camara, memoria ram.
+    3- Deben poder prender, reiniciar, tomar fotos y grabar.*/
+
+    function coflaInAndroidStore(){
+    
+        class smartPhone {
+            constructor(color, weight, ram, mp, price){
+                this.color = color;
+                this.weight = weight;
+                this.ram = ram;
+                this.mp = mp;
+                this.price = price;
+            }
+    
+            static on(){
+                alert("phone is turning on");
+            }
+    
+            static restart(){
+                alert("phone is restarting");
+            }
+    
+            takePhoto(){
+                alert("Photo capture successfully with "+this.mp + " megapixels");
+            }
+    
+            startRecord(){
+                alert("Recording at " + this.ram + " of ram");
+            }
+    
+            set setColor(color){
+                this.color = color;
+            }
+    
+            get getPrice(){
+                return this.price;
+            }
+    
+            get getInfo(){
+                alert(`El celular es de color: ${this.color}\nEl dispositivo cuenta con un peso aproximado de ${this.weight}\nTiene una capacidad de ram de: ${this.ram}\nSu cámara tiene una resolución óptima y cuenta con: ${this.mp} en megapixeles`);
+            }
+        }
+    
+        const pocoM1 = new smartPhone("black","350gr",12,68,190);
+        const xiaomik1 = new smartPhone("rose","330gr",8,128,180);
+        const samsungUltra = new smartPhone("beige", "390gr", 12, 168, 254);
+        let actualPhone;
+        let flag = false;
+
+        do {
+            let choice = prompt("Bienvenido a la tienda de celulares, tenemos a la venta los siguientes 3 modelos: \n1. pocoM1\n2. xiaomik1\n3. samsungUltra\nElija una opción para revisar las características del celular.");
+
+            let choiceTwo;
+            let phonePrice;
+            let newColor;
+
+            switch (choice) {
+                case '1':
+                    pocoM1.getInfo();
+                    phonePrice = pocoM1.getPrice;
+                    choiceTwo = prompt(`Desea comprar el celular por: ${phonePrice}USD?\n1. Pagar\n2. Pagar, pero cambiar el color del dispositivo\n3. seguir mirando`);
+                    if (choiceTwo === '2') {
+                        newColor = prompt(`Ingrese el nuevo color del celular: `);
+                        pocoM1.setColor(newColor);
+                        alert("El color ha sido cambiado");
+                    }
+                    actualPhone = pocoM1; // Asignar el objeto pocoM1 a actualPhone
+                    break;
+                case '2':
+                    xiaomik1.getInfo();
+                    phonePrice = xiaomik1.getPrice;
+                    choiceTwo = prompt(`Desea comprar el celular por: ${phonePrice}USD?\n1. Pagar\n2. Pagar, pero cambiar el color del dispositivo\n3. seguir mirando`);
+                    if (choiceTwo === '2') {
+                        newColor = prompt(`Ingrese el nuevo color del celular: `);
+                        xiaomik1.setColor(newColor);
+                        alert("El color ha sido cambiado");
+                    }
+                    actualPhone = xiaomik1; // Asignar el objeto xiaomik1 a actualPhone
+                    break;
+                case '3':
+                    samsungUltra.getInfo();
+                    phonePrice = samsungUltra.getPrice;
+                    choiceTwo = prompt(`Desea comprar el celular por: ${phonePrice}USD?\n1. Pagar\n2. Pagar, pero cambiar el color del dispositivo\n3. seguir mirando`);
+                    if (choiceTwo === '2') {
+                        newColor = prompt(`Ingrese el nuevo color del celular: `);
+                        samsungUltra.setColor(newColor);
+                        alert("El color ha sido cambiado");
+                    }
+                    actualPhone = samsungUltra; // Asignar el objeto samsungUltra a actualPhone
+                    break;
+            }
+
+            if (choiceTwo === '1' || choiceTwo === '2') {
+                flag = true;
+            } else {
+                flag = false;
+            }
+
+        } while (!flag);
+        
+        function checkingPhone(actual){
+            let flag;
+            do {
+                let choice = prompt("que acción quieres hacer con tu celular?: \n1. prender el celular\n2. reiniciar el celular\n3. tomar una foto\n4. grabar un video\n5. revisar las caracteristicas del celular\n6. nada");
+                if(choice === '1'){
+                    actual.on();
+                }else if(choice === '2'){
+                    actual.restart();
+                }else if(choice === '3'){
+                    actual.takePhoto();
+                }else if(choice === '4'){
+                    actual.startRecord();
+                }else if(choice === '5'){
+                    actual.getInfo();
+                }else{
+                    flag = true;
+                }
+    
+            } while(flag !== true);
+        }
+    
+        checkingPhone(actualPhone);
+    }
+
+
+}
