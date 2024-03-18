@@ -634,16 +634,111 @@ sumar, restar, multiplicar y dividir
             }while(flag === false);
         }
 
+        
+        
+        let secondPart = prompt(`Al final cofla no compro ninguno de los celulares y temrino revisando otros 2, quieres continuar con el ejercicio?\n1. si\n2. terminar`);
+        if(secondPart === '1'){
+            secondPartOfAndroidStore();
+        }
         /*
             Problema B: Al final Cofla no compro ningun celular de los anteriores y decidio irse por un gama alta, donde tenia 2 opciones para elegir, los gama alta podian hacer lo mismo que los celulares anteriores pero a demás tenian tambien las siguientes mejoras:
             camara con capacidad de grabar a una velocidad super lenta
             reconocimiento facial
             camara extra
         */
+        function secondPartOfAndroidStore(){
 
+            class smartPhoneHigher extends smartPhone{
+                constructor(color, weight, ram, mp, price, mp2){
+                    super(color, weight, ram, mp, price);
+                    this.mp2 = mp2;
+                }
+                startSlowestRecord(){
+                    alert(`Starting recording slowest because of ${this.mp2} megapixels on camera 2`);
+                }
+                facialRecognize(){
+                    alert(`can't recognize`);
+                }
+                takePhotoCamera2(){
+                    alert(`Marvellous photo by camera 2 with ${this.mp2} megapixels`);
+                }
+            }
+
+            const iphoneProS223 = new smartPhoneHigher("gray", "531gr", 24, 356, 1834, 564);
+            const samsungPROz21 = new smartPhoneHigher("white", "491gr", 18, 296, 1743, 450);
+
+            do {
+                let choice = prompt("Bienvenido a la tienda de celulares, tenemos a la venta los siguientes 2 modelos: \n1. iphoneProS223\n2. samsungPROz21\nElija una opción para revisar las características del celular.");
+    
+                switch (choice) {
+                    case '1':
+                        iphoneProS223.getInfo;
+                        phonePrice = iphoneProS223.getPrice;
+                        choiceTwo = prompt(`Desea comprar el celular por: ${phonePrice}USD?\n1. Pagar\n2. Pagar, pero cambiar el color del dispositivo\n3. seguir mirando`);
+                        if (choiceTwo === '2') {
+                            newColor = prompt(`Ingrese el nuevo color del celular: `);
+                            iphoneProS223.setColor = newColor;
+                            alert("El color ha sido cambiado");
+                        }
+                        actualPhone = iphoneProS223;
+                    break;
+                    case '2':
+                        samsungPROz21.getInfo;
+                        phonePrice = samsungPROz21.getPrice;
+                        choiceTwo = prompt(`Desea comprar el celular por: ${phonePrice}USD?\n1. Pagar\n2. Pagar, pero cambiar el color del dispositivo\n3. seguir mirando`);
+                        if (choiceTwo === '2') {
+                            newColor = prompt(`Ingrese el nuevo color del celular: `);
+                            samsungPROz21.setColor = newColor;;
+                            alert("El color ha sido cambiado");
+                        }
+                        actualPhone = samsungPROz21;
+                    break;
+                }
+    
+                if (choiceTwo === '1' || choiceTwo === '2') {
+                    flag = true;
+                    alert(`la compra fue exitosa, su celular posee las siguientes caracteristicas: `);
+                    actualPhone.getInfo;
+                } else {
+                    flag = false;
+                }
+    
+            } while (flag === false);
+
+            let choicethree = prompt("Desea jugar con su celular?:\n 1. Si\n2.No");
+        
+            if(choicethree === '1'){
+                flag = false;
+                playWithPhone(actualPhone);
+            }
+
+            function playWithPhone(phone){
+                do{
+                    let choicePhoneSelected = prompt("que acción desea realizar con el celular?\n1. Tomar una foto\n2. Grabar un video\n3. Reiniciar\n4. revisar la informacion del celular\n5. Grabar a velocidad ultra lenta\n6. Activar el reconocimiento facial\n 7. Tomar foto super nitida\n 8. Salir.");
+                    if(choicePhoneSelected === '1'){
+                        phone.takePhoto();
+                    }else if(choicePhoneSelected === '2'){
+                        phone.startRecord();
+                    }else if(choicePhoneSelected === '3'){
+                        smartPhone.restart();
+                    }else if(choicePhoneSelected === '4'){
+                        phone.getInfo;
+                    }else if(choicePhoneSelected === '5'){
+                        phone.startSlowestRecord();
+                    }else if(choicePhoneSelected === '6'){
+                        phone.facialRecognize();
+                    }else if(choicePhoneSelected === '7'){
+                        phone.takePhotoCamera2();
+                    }else{
+                        flag = true;
+                    }
+                }while(flag === false);
+            }
+        }
         
         
     }
+
 
 
 }
