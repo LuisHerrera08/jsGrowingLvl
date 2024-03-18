@@ -557,80 +557,83 @@ sumar, restar, multiplicar y dividir
         const samsungUltra = new smartPhone("beige", "390gr", 12, 168, 254);
         let actualPhone;
         let flag = false;
+        let choiceTwo;
+        let phonePrice;
+        let newColor;
 
         do {
             let choice = prompt("Bienvenido a la tienda de celulares, tenemos a la venta los siguientes 3 modelos: \n1. pocoM1\n2. xiaomik1\n3. samsungUltra\nElija una opción para revisar las características del celular.");
 
-            let choiceTwo;
-            let phonePrice;
-            let newColor;
-
             switch (choice) {
                 case '1':
-                    pocoM1.getInfo();
+                    pocoM1.getInfo;
                     phonePrice = pocoM1.getPrice;
                     choiceTwo = prompt(`Desea comprar el celular por: ${phonePrice}USD?\n1. Pagar\n2. Pagar, pero cambiar el color del dispositivo\n3. seguir mirando`);
                     if (choiceTwo === '2') {
                         newColor = prompt(`Ingrese el nuevo color del celular: `);
-                        pocoM1.setColor(newColor);
+                        pocoM1.setColor = newColor;
                         alert("El color ha sido cambiado");
                     }
-                    actualPhone = pocoM1; // Asignar el objeto pocoM1 a actualPhone
-                    break;
+                    actualPhone = pocoM1;
+                break;
                 case '2':
-                    xiaomik1.getInfo();
+                    xiaomik1.getInfo;
                     phonePrice = xiaomik1.getPrice;
                     choiceTwo = prompt(`Desea comprar el celular por: ${phonePrice}USD?\n1. Pagar\n2. Pagar, pero cambiar el color del dispositivo\n3. seguir mirando`);
                     if (choiceTwo === '2') {
                         newColor = prompt(`Ingrese el nuevo color del celular: `);
-                        xiaomik1.setColor(newColor);
+                        xiaomik1.setColor = newColor;;
                         alert("El color ha sido cambiado");
                     }
-                    actualPhone = xiaomik1; // Asignar el objeto xiaomik1 a actualPhone
-                    break;
+                    actualPhone = xiaomik1;
+                break;
                 case '3':
-                    samsungUltra.getInfo();
+                    samsungUltra.getInfo;
                     phonePrice = samsungUltra.getPrice;
                     choiceTwo = prompt(`Desea comprar el celular por: ${phonePrice}USD?\n1. Pagar\n2. Pagar, pero cambiar el color del dispositivo\n3. seguir mirando`);
                     if (choiceTwo === '2') {
                         newColor = prompt(`Ingrese el nuevo color del celular: `);
-                        samsungUltra.setColor(newColor);
+                        samsungUltra.setColor = newColor;;
                         alert("El color ha sido cambiado");
                     }
-                    actualPhone = samsungUltra; // Asignar el objeto samsungUltra a actualPhone
-                    break;
+                    actualPhone = samsungUltra;
+                break;
             }
 
             if (choiceTwo === '1' || choiceTwo === '2') {
                 flag = true;
+                alert(`la compra fue exitosa, su celular posee las siguientes caracteristicas: `);
+                actualPhone.getInfo;
             } else {
                 flag = false;
             }
 
-        } while (!flag);
+        } while (flag === false);
+
+        let choicethree = prompt("Desea jugar con su celular?:\n 1. Si\n2.No");
         
-        function checkingPhone(actual){
-            let flag;
-            do {
-                let choice = prompt("que acción quieres hacer con tu celular?: \n1. prender el celular\n2. reiniciar el celular\n3. tomar una foto\n4. grabar un video\n5. revisar las caracteristicas del celular\n6. nada");
-                if(choice === '1'){
-                    actual.on();
-                }else if(choice === '2'){
-                    actual.restart();
-                }else if(choice === '3'){
-                    actual.takePhoto();
-                }else if(choice === '4'){
-                    actual.startRecord();
-                }else if(choice === '5'){
-                    actual.getInfo();
+        if(choicethree === '1'){
+            flag = false;
+            playWithPhone(actualPhone);
+        }
+
+        function playWithPhone(phone){
+            do{
+                let choicePhoneSelected = prompt("que acción desea realizar con el celular?\n1. Tomar una foto\n2. Grabar un video\n3. Reiniciar\n4. revisar la informacion del celular\n5. salir");
+                if(choicePhoneSelected === '1'){
+                    phone.takePhoto();
+                }else if(choicePhoneSelected === '2'){
+                    phone.startRecord();
+                }else if(choicePhoneSelected === '3'){
+                    smartPhone.restart();
+                }else if(choicePhoneSelected === '4'){
+                    phone.getInfo;
                 }else{
                     flag = true;
                 }
-    
-            } while(flag !== true);
+            }while(flag === false);
         }
-    
-        checkingPhone(actualPhone);
+        
     }
 
 
