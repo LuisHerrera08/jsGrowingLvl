@@ -633,6 +633,15 @@ sumar, restar, multiplicar y dividir
                 }
             }while(flag === false);
         }
+
+        /*
+            Problema B: Al final Cofla no compro ningun celular de los anteriores y decidio irse por un gama alta, donde tenia 2 opciones para elegir, los gama alta podian hacer lo mismo que los celulares anteriores pero a demás tenian tambien las siguientes mejoras:
+            camara con capacidad de grabar a una velocidad super lenta
+            reconocimiento facial
+            camara extra
+        */
+
+        
         
     }
 
