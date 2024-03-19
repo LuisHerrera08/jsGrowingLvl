@@ -32,6 +32,10 @@ function checker(selected){
         case '7':
             coflaInAndroidStore();
         break;
+
+        case '8':
+            coflaGettingNewGames();
+        break;
     }
 }
 
@@ -739,6 +743,39 @@ sumar, restar, multiplicar y dividir
         
     }
 
+    /*
+        Cofla tiene su nuevo celular y quiere jugar algo en la play store, consiguio 7 apps que son bastante compatibles con sus gustos, pero solo se descargara 2 para no perder tanto tiempo jugando. Crear un sistema para decidir que app descargar:
+        1. Debe contener la cantidad de descargas puntuacion y peso
+        2. se deben poder instalar, abrir, cerrar y desinstalar.
+    */
+   function coflaGettingNewGames(){
+    class apps{
+        constructor(downloads, rate, size){
+            this.downloads  = downloads;
+            this.rate = rate;
+            this.size = size;
+        }
+        install(){
 
+        }
+        uninstall(){
+
+        }
+        open(){
+
+        }
+        close(){
+
+        }
+
+    }
+    const toron1 = new apps(2500, 4, "2GB")
+    const toron2 = new apps(1500, 4.5, "1GB")
+    const toron3 = new apps(500, 3.5, "1GB")
+    const toron4 = new apps(550, 4, "200MB")
+    const toron5 = new apps(200, 5, "700MB")
+    const toron6 = new apps(2000, 5, "1GB")
+    const toron7 = new apps(1500, 4.2, "1GB")
+   }
 
 }
