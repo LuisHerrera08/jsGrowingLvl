@@ -3,39 +3,58 @@ window.onload = function() {
     document.getElementById("selectorBtn").onclick = () => checker(selected);
 }
 
-function checker(selected){
-    switch(selected.value){
-        case '1':
-            coflaIceCream();
-        break;
+// function checker(selected){
+    
+//     switch(selected.value){
+//         case '1':
+//             coflaIceCream();
+//         break;
         
-        case '2':
-            coflaSpareMoney();
-        break;
+//         case '2':
+//             coflaSpareMoney();
+//         break;
 
-        case '3':
-            coflaGuilty();
-        break;
+//         case '3':
+//             coflaGuilty();
+//         break;
 
-        case '4':
-            partySmith();
-        break;
+//         case '4':
+//             partySmith();
+//         break;
 
-        case '5':
-            coflaCollege();
-        break;
+//         case '5':
+//             coflaCollege();
+//         break;
 
-        case '6':
-            coflaCalculator();
-        break;
+//         case '6':
+//             coflaCalculator();
+//         break;
 
-        case '7':
-            coflaInAndroidStore();
-        break;
+//         case '7':
+//             coflaInAndroidStore();
+//         break;
 
-        case '8':
-            coflaGettingNewGames();
-        break;
+//         case '8':
+//             coflaGettingNewGames();
+//         break;
+//     }
+// }
+
+function checker(selected){
+    const actions = {
+        '1': coflaIceCream,
+        '2': coflaSpareMoney,
+        '3': coflaGuilty,
+        '4': partySmith,
+        '5': coflaCollege,
+        '6': coflaCalculator,
+        '7': coflaInAndroidStore,
+        '8': coflaGettingNewGames
+    };
+
+    const action = actions[selected.value];
+    if(action){
+        action();
     }
 }
 
@@ -519,28 +538,42 @@ sumar, restar, multiplicar y dividir
     function coflaInAndroidStore(){
     
         class smartPhone {
+            
+            static turnOn = false;
+
             constructor(color, weight, ram, mp, price){
                 this.color = color;
                 this.weight = weight;
                 this.ram = ram;
                 this.mp = mp;
                 this.price = price;
+                this.turnOn = false;
+            }
+            
+            turnOn(){
+                if(this.turnOn === false){
+                    alert('Celular encendido');
+                    this.turnOn = true;
+                }else{
+                    alert('Celular apagado');
+                    this.turnOn = false;
+                }
             }
     
-            static on(){
-                alert("phone is turning on");
-            }
-    
-            static restart(){
-                alert("phone is restarting");
+            restart(){
+                if(this.turnOn === true){
+                    alert('Reiniciando celular');
+                }else{
+                    alert('El celular no se puede reiniciar estando apagado');
+                }
             }
     
             takePhoto(){
-                alert("Photo capture successfully with "+this.mp + " megapixels");
+                this.turnOn ? ( alert("Photo capture successfully with "+this.mp + " megapixels") ):(alert('need to turn on the smartphone'));              
             }
     
             startRecord(){
-                alert("Recording at " + this.ram + " of ram");
+                this.turnOn ? ( alert("Recording at " + this.ram + " of ram") ):( alert('need to turn on the smartphone') );   
             }
     
             set setColor(color){
@@ -617,29 +650,29 @@ sumar, restar, multiplicar y dividir
         let choicethree = prompt("Desea jugar con su celular?:\n 1. Si\n2.No");
         
         if(choicethree === '1'){
-            flag = false;
             playWithPhone(actualPhone);
         }
 
         function playWithPhone(phone){
+            let innerFlag = false;
             do{
-                let choicePhoneSelected = prompt("que acción desea realizar con el celular?\n1. Tomar una foto\n2. Grabar un video\n3. Reiniciar\n4. revisar la informacion del celular\n5. salir");
+                let choicePhoneSelected = prompt("que acción desea realizar con el celular?\n1. Presionar el boton de encendido/apagado\n2. Reiniciar el celular\n3. Tomar una foto\n4. Iniciar una grabacion\n5. Revisar la informacion del celular\n 6. Salir");
                 if(choicePhoneSelected === '1'){
-                    phone.takePhoto();
+                    phone.turnOn();
                 }else if(choicePhoneSelected === '2'){
-                    phone.startRecord();
+                    phone.restart();
                 }else if(choicePhoneSelected === '3'){
-                    smartPhone.restart();
+                    phone.takePhoto();
                 }else if(choicePhoneSelected === '4'){
+                    phone.startRecord();
+                }else if(choicePhoneSelected === '5'){
                     phone.getInfo;
                 }else{
-                    flag = true;
+                    innerFlag = true;
                 }
-            }while(flag === false);
+            }while(innerFlag === false);
         }
-
-        
-        
+/* ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
         let secondPart = prompt(`Al final cofla no compro ninguno de los celulares y temrino revisando otros 2, quieres continuar con el ejercicio?\n1. si\n2. terminar`);
         if(secondPart === '1'){
             secondPartOfAndroidStore();
@@ -756,26 +789,70 @@ sumar, restar, multiplicar y dividir
             this.size = size;
         }
         install(){
-
+            alert("intalled");
         }
         uninstall(){
-
+            alert("uninstalled");
         }
         open(){
-
+            alert("app started");
         }
         close(){
-
+            alert("app closed");
         }
 
     }
-    const toron1 = new apps(2500, 4, "2GB")
-    const toron2 = new apps(1500, 4.5, "1GB")
-    const toron3 = new apps(500, 3.5, "1GB")
-    const toron4 = new apps(550, 4, "200MB")
-    const toron5 = new apps(200, 5, "700MB")
-    const toron6 = new apps(2000, 5, "1GB")
-    const toron7 = new apps(1500, 4.2, "1GB")
+    
+    const toron1 = new apps(2500, 4, "2GB");
+    const toron2 = new apps(1500, 4.5, "1GB");
+    const toron3 = new apps(500, 3.5, "1GB");
+    const toron4 = new apps(550, 4, "200MB");
+    const toron5 = new apps(200, 5, "700MB");
+    const toron6 = new apps(2000, 5, "1GB");
+    const toron7 = new apps(1500, 4.2, "1GB");
+
+    let choice = prompt(`Checkear app: \n1. toron1\n2. toron2\n3. toron3\n4. toron4\n5. toron5\n6. toron6\n7. toron7`);
+    do {
+
+        switch (choice) {
+            case '1':
+
+            break;
+
+            case '2':
+                
+            break;
+
+            case '3':
+                
+            break;
+
+            case '4':
+                
+            break;
+
+            case '5':
+                
+            break;
+
+            case '6':
+                
+            break;
+
+            case '7':
+                
+            break;
+            
+        }
+
+        if (choiceTwo === '1') {
+            flag = true;
+        } else {
+            flag = false;
+        }
+
+    } while (flag === false);
+
    }
 
 }
